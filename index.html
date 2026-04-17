@@ -147,16 +147,19 @@
   .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .hamburger.open span:nth-child(2) { opacity: 0; }
   .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-mobile-only { display: none; }
   @media (max-width: 768px) {
-    .nav { padding: 14px 20px; flex-wrap: nowrap; gap: 0; align-items: center; }
-    .hamburger { display: flex; }
-    .nav-links { visibility: hidden; opacity: 0; pointer-events: none; flex-direction: column; gap: 0; position: fixed; top: 60px; left: 0; right: 0; background: #fff; border-bottom: 1px solid #f0f0f0; padding: 8px 0; z-index: 9999; box-shadow: 0 4px 16px rgba(0,0,0,0.1); transition: opacity 0.2s; }
-    .nav-links.open { visibility: visible; opacity: 1; pointer-events: auto; }
+    .nav { padding: 14px 20px; }
+    .nav-links { display: none; flex-direction: column; position: fixed; top: 61px; left: 0; right: 0; background: #fff; border-bottom: 1px solid #f0f0f0; padding: 8px 0; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .nav-links.open { display: flex; }
     .nav-links a { padding: 14px 24px; font-size: 15px; border-bottom: 1px solid #f5f5f5; color: #111; text-decoration: none; display: block; }
     .nav-links a:last-child { border-bottom: none; }
-    .nav-cta { display: block; width: calc(100% - 40px); text-align: center; margin: 0 20px 8px; border-radius: 8px; padding: 12px; font-size: 15px; }
+    .hamburger { display: flex; }
+    .nav-mobile-only { display: block; color: #6d28d9; font-weight: 500; }
+    .nav-cta { display: none !important; }
+    .nav-cta { font-size: 12px; padding: 8px 12px; }
+    .hero h1 { font-size: 42px; letter-spacing: -1.5px; margin: 0 auto 20px; }
     .hero { padding: 48px 20px 40px; }
-    .hero h1 { font-size: 42px; margin: 0 auto 20px; letter-spacing: -1.5px; }
     .services-wrap, .metiers-wrap { padding: 48px 20px; }
     .feature-row, .factu-grid, .cards-grid, .metiers-grid, .contact-inner { grid-template-columns: 1fr; }
     .offres-inner { padding: 0 20px; }
@@ -194,6 +197,7 @@
     <a href="#services" onclick="closeMenu()">Services</a>
     <a href="#facturation" onclick="closeMenu()">Facturation électronique</a>
     <a href="#metiers" onclick="closeMenu()">Nouveaux métiers</a>
+    <a href="#contact" onclick="closeMenu()" class="nav-mobile-only">Prendre rendez-vous</a>
   </div>
   <a href="#contact" class="nav-cta">Prendre rendez-vous</a>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
@@ -378,7 +382,7 @@
           </select>
         </div>
         <div class="form-group"><label for="message">Message <span class="required-star">*</span></label><textarea id="message" name="message" placeholder="Décrivez votre projet ou votre question…" required></textarea></div>
-        <p class="rgpd">En soumettant ce formulaire, vous acceptez que Li!NE conserve vos données pour vous recontacter. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression. <a href="confidentialite.html" style="color:#6d28d9;">En savoir plus</a>.</p>
+        <p class="rgpd">En soumettant ce formulaire, vous acceptez que Li!NE conserve vos données pour vous recontacter. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression. <a href="https://liine.fr/confidentialite.html" style="color:#6d28d9;" target="_blank">En savoir plus</a>.</p>
         <button type="submit" class="btn-submit"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Envoyer le message</button>
       </form>
       <div class="success-msg" id="successMsg">
@@ -396,12 +400,11 @@
 </footer>
 
 <script>
-async function toggleMenu() {
+function toggleMenu() {
   var nav = document.getElementById('navLinks');
   var btn = document.getElementById('hamburger');
   if (!nav || !btn) return;
-  var isOpen = nav.classList.contains('open');
-  if (isOpen) {
+  if (nav.classList.contains('open')) {
     nav.classList.remove('open');
     btn.classList.remove('open');
   } else {
@@ -418,8 +421,7 @@ function closeMenu() {
 document.addEventListener('click', function(e) {
   var nav = document.getElementById('navLinks');
   var btn = document.getElementById('hamburger');
-  if (!nav || !btn) return;
-  if (!nav.contains(e.target) && !btn.contains(e.target)) {
+  if (nav && btn && !nav.contains(e.target) && !btn.contains(e.target)) {
     nav.classList.remove('open');
     btn.classList.remove('open');
   }
