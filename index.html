@@ -11,14 +11,15 @@
   .nav-links { display: flex; gap: 28px; align-items: center; }
   .nav-links a { text-decoration: none; font-size: 14px; color: #111; transition: opacity 0.15s; }
   .nav-links a:hover { opacity: 0.6; }
-  .nav-cta { background: #6d28d9; color: #fff; border: none; border-radius: 8px; padding: 9px 20px; font-size: 14px; cursor: pointer; font-family: inherit; }
+  .nav-cta { background: #6d28d9; color: #fff; border: none; border-radius: 8px; padding: 9px 20px; font-size: 14px; cursor: pointer; font-family: inherit; text-decoration: none; }
   .nav-cta:hover { background: #5b21b6; }
-  .hero { padding: 80px 48px 60px; max-width: 1100px; margin: 0 auto; }
+  .hero-bg { background: #fafafa; }
+  .hero { padding: 80px 48px 60px; max-width: 1100px; margin: 0 auto; text-align: center; }
   .hero-tag { display: inline-block; background: #ede9fe; color: #5b21b6; font-size: 11px; font-weight: 500; padding: 4px 12px; border-radius: 20px; margin-bottom: 20px; letter-spacing: 0.8px; text-transform: uppercase; }
-  .hero h1 { font-size: 52px; font-weight: 500; line-height: 1.1; letter-spacing: -1.5px; color: #0f0f0f; max-width: 650px; margin-bottom: 20px; }
+  .hero h1 { font-size: 68px; font-weight: 500; line-height: 1.05; letter-spacing: -2.5px; color: #0f0f0f; max-width: 800px; margin: 0 auto 20px; }
   .hero h1 em { font-style: normal; color: #6d28d9; }
-  .hero-sub { font-size: 18px; color: #555; line-height: 1.6; max-width: 520px; margin-bottom: 36px; }
-  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-sub { font-size: 18px; color: #555; line-height: 1.6; max-width: 560px; margin: 0 auto 36px; }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
   .btn-primary { background: #6d28d9; color: #fff; border: none; border-radius: 8px; padding: 12px 24px; font-size: 15px; cursor: pointer; font-family: inherit; text-decoration: none; display: inline-block; }
   .btn-primary:hover { background: #5b21b6; }
   .btn-secondary { background: transparent; color: #333; border: 1px solid #ddd; border-radius: 8px; padding: 12px 24px; font-size: 15px; cursor: pointer; font-family: inherit; text-decoration: none; display: inline-block; }
@@ -108,7 +109,7 @@
   .contact-left h2 em { font-style: normal; color: #db2777; }
   .contact-left > p { font-size: 16px; color: #c4b5fd; line-height: 1.7; margin-bottom: 36px; }
   .contact-promise { display: flex; flex-direction: column; gap: 12px; }
-  .contact-promise-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: #e9d5ff; }
+  .contact-promise-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: #fff; font-weight: 500; }
   .promise-dot { width: 6px; height: 6px; border-radius: 50%; background: #db2777; flex-shrink: 0; margin-top: 5px; }
   .contact-info-links { margin-top: 32px; display: flex; flex-direction: column; gap: 8px; }
   .contact-info-links a { font-size: 14px; color: #c4b5fd; text-decoration: none; display: flex; align-items: center; gap: 8px; }
@@ -146,17 +147,16 @@
   .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .hamburger.open span:nth-child(2) { opacity: 0; }
   .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
   @media (max-width: 768px) {
-    .nav { padding: 14px 20px; flex-wrap: nowrap; gap: 0; }
+    .nav { padding: 14px 20px; flex-wrap: nowrap; gap: 0; align-items: center; }
     .hamburger { display: flex; }
-    .nav-links { display: none; flex-direction: column; gap: 0; position: fixed; top: 60px; left: 0; right: 0; background: #fff; border-bottom: 1px solid #f0f0f0; padding: 8px 0; z-index: 9999; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
-    .nav-links.open { display: flex !important; }
+    .nav-links { visibility: hidden; opacity: 0; pointer-events: none; flex-direction: column; gap: 0; position: fixed; top: 60px; left: 0; right: 0; background: #fff; border-bottom: 1px solid #f0f0f0; padding: 8px 0; z-index: 9999; box-shadow: 0 4px 16px rgba(0,0,0,0.1); transition: opacity 0.2s; }
+    .nav-links.open { visibility: visible; opacity: 1; pointer-events: auto; }
     .nav-links a { padding: 14px 24px; font-size: 15px; border-bottom: 1px solid #f5f5f5; color: #111; text-decoration: none; display: block; }
     .nav-links a:last-child { border-bottom: none; }
-    .nav-cta { display: none !important; }
+    .nav-cta { display: block; width: calc(100% - 40px); text-align: center; margin: 0 20px 8px; border-radius: 8px; padding: 12px; font-size: 15px; }
     .hero { padding: 48px 20px 40px; }
-    .hero h1 { font-size: 36px; }
+    .hero h1 { font-size: 42px; margin: 0 auto 20px; letter-spacing: -1.5px; }
     .services-wrap, .metiers-wrap { padding: 48px 20px; }
     .feature-row, .factu-grid, .cards-grid, .metiers-grid, .contact-inner { grid-template-columns: 1fr; }
     .offres-inner { padding: 0 20px; }
@@ -194,7 +194,6 @@
     <a href="#services" onclick="closeMenu()">Services</a>
     <a href="#facturation" onclick="closeMenu()">Facturation électronique</a>
     <a href="#metiers" onclick="closeMenu()">Nouveaux métiers</a>
-    <a href="#contact" onclick="closeMenu()" style="color:#6d28d9;font-weight:500;">Prendre rendez-vous</a>
   </div>
   <a href="#contact" class="nav-cta">Prendre rendez-vous</a>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
@@ -202,7 +201,7 @@
   </button>
 </nav>
 
-<section id="hero" class="hero">
+<div class="hero-bg"><section id="hero" class="hero">
   <div class="hero-tag">Conseil &amp; Transformation digitale</div>
   <h1>Accélérez votre<br><em>transformation</em><br>digitale</h1>
   <p class="hero-sub">Li!NE accompagne les cabinets d'expertise comptable dans leurs projets de transformation et de mise en conformité réglementaire.</p>
@@ -210,7 +209,7 @@
     <a href="#services" class="btn-primary">Découvrir les services</a>
     <a href="#offres" class="btn-secondary">En savoir plus</a>
   </div>
-</section>
+</section></div>
 
 <section id="services" class="services-wrap">
   <div class="section-tag tag-orange">Services</div>
@@ -400,6 +399,7 @@
 async function toggleMenu() {
   var nav = document.getElementById('navLinks');
   var btn = document.getElementById('hamburger');
+  if (!nav || !btn) return;
   var isOpen = nav.classList.contains('open');
   if (isOpen) {
     nav.classList.remove('open');
@@ -410,13 +410,16 @@ async function toggleMenu() {
   }
 }
 function closeMenu() {
-  document.getElementById('navLinks').classList.remove('open');
-  document.getElementById('hamburger').classList.remove('open');
+  var nav = document.getElementById('navLinks');
+  var btn = document.getElementById('hamburger');
+  if (nav) nav.classList.remove('open');
+  if (btn) btn.classList.remove('open');
 }
 document.addEventListener('click', function(e) {
   var nav = document.getElementById('navLinks');
   var btn = document.getElementById('hamburger');
-  if (nav && btn && !nav.contains(e.target) && !btn.contains(e.target)) {
+  if (!nav || !btn) return;
+  if (!nav.contains(e.target) && !btn.contains(e.target)) {
     nav.classList.remove('open');
     btn.classList.remove('open');
   }
