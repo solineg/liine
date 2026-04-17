@@ -139,9 +139,21 @@
   .footer-links { display: flex; gap: 20px; font-size: 13px; }
   .footer-links a { color: #777; text-decoration: none; }
 
+  /* Hamburger */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: #111; border-radius: 2px; transition: all 0.25s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
   @media (max-width: 768px) {
-    .nav { padding: 14px 20px; flex-wrap: wrap; gap: 12px; }
-    .nav-links { gap: 14px; flex-wrap: wrap; }
+    .nav { padding: 14px 20px; flex-wrap: nowrap; gap: 0; }
+    .hamburger { display: flex; }
+    .nav-links { display: none; flex-direction: column; gap: 0; position: absolute; top: 61px; left: 0; right: 0; background: #fff; border-bottom: 1px solid #f0f0f0; padding: 8px 0; z-index: 100; }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 12px 24px; font-size: 15px; border-bottom: 1px solid #f5f5f5; }
+    .nav-links a:last-child { border-bottom: none; }
+    .nav-cta { display: none; }
     .hero { padding: 48px 20px 40px; }
     .hero h1 { font-size: 36px; }
     .services-wrap, .metiers-wrap { padding: 48px 20px; }
@@ -177,12 +189,16 @@
 
 <nav class="nav">
   <svg height="32" viewBox="43.5 111.9 287.9 126" preserveAspectRatio="xMinYMid meet" style="display:block;"><use href="#logo"/></svg>
-  <div class="nav-links">
-    <a href="#services">Services</a>
-    <a href="#facturation">Facturation électronique</a>
-    <a href="#metiers">Nouveaux métiers</a>
+  <div class="nav-links" id="navLinks">
+    <a href="#services" onclick="closeMenu()">Services</a>
+    <a href="#facturation" onclick="closeMenu()">Facturation électronique</a>
+    <a href="#metiers" onclick="closeMenu()">Nouveaux métiers</a>
+    <a href="#contact" onclick="closeMenu()" style="color:#6d28d9;font-weight:500;">Prendre rendez-vous</a>
   </div>
   <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Prendre rendez-vous</button>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <section id="hero" class="hero">
@@ -376,11 +392,21 @@
 <footer>
   <svg height="26" viewBox="43.5 111.9 287.9 126" preserveAspectRatio="xMinYMid meet" style="display:block;"><use href="#logo"/></svg>
   <div class="footer-copy">© 2026 Li!NE — liine.fr</div>
-  <div class="footer-links"><a href="#">Mentions légales</a><a href="#">Confidentialité</a><a href="#contact">Contact</a></div>
+  <div class="footer-links"><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a><a href="#contact">Contact</a></div>
 </footer>
 
 <script>
-async function handleSubmit(e) {
+async function toggleMenu() {
+  const nav = document.getElementById('navLinks');
+  const btn = document.getElementById('hamburger');
+  nav.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('navLinks').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+function handleSubmit(e) {
   e.preventDefault();
   const p = document.getElementById('prenom').value.trim();
   const n = document.getElementById('nom').value.trim();
