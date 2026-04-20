@@ -129,8 +129,8 @@
   .metiers-intro p { font-size: 17px; color: #666; line-height: 1.7; }
   .metiers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .metier-card { border-radius: 16px; padding: 28px; border: 1px solid #f0f0f0; display: flex; flex-direction: column; gap: 18px; }
-  .metier-card.welcomer { border-top: 3px solid #db2777; }
-  .metier-card.expert   { border-top: 3px solid #6d28d9; }
+  .metier-card.welcomer { border-top: 3px solid #1e3a5f; }
+  .metier-card.expert   { border-top: 3px solid #1a6fa5; }
   .metier-card.chef     { border-top: 3px solid #0891b2; }
   .metier-top { display: flex; align-items: center; gap: 12px; }
   .metier-picto { width: 46px; height: 46px; border-radius: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -145,7 +145,7 @@
   .metier-btn.teal   { color: #0891b2; border-color: #a5f3fc; }
   .metier-btn.purple { color: #6d28d9; border-color: #ddd6fe; }
   .metier-btn:hover { opacity: 0.8; }
-  .metiers-bottom { background: #fdf2f8; border: 1px solid #fbcfe8; border-radius: 16px; padding: 28px 32px; margin-top: 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .metiers-bottom { background: #f0f7ff; border: 1px solid #bfdbfe; border-radius: 16px; padding: 28px 32px; margin-top: 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
   .metiers-bottom p { font-size: 15px; color: #444; line-height: 1.6; max-width: 640px; }
   .btn-pink { background: #db2777; color: #fff; border: none; border-radius: 8px; padding: 12px 24px; font-size: 15px; cursor: pointer; font-family: inherit; white-space: nowrap; flex-shrink: 0; text-decoration: none; display: inline-block; }
   .btn-pink:hover { background: #be185d; }
@@ -189,24 +189,10 @@
   .footer-copy { font-size: 13px; color: #999; }
   .footer-links { display: flex; gap: 20px; font-size: 13px; }
   .footer-links a { color: #777; text-decoration: none; }
-
-  /* Hamburger */
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
-  .nav-cta { display: inline-block; }
-  .hamburger span { display: block; width: 22px; height: 2px; background: #111; border-radius: 2px; transition: all 0.25s; }
-  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .hamburger.open span:nth-child(2) { opacity: 0; }
-  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-  .nav-mobile-only { display: none; }
   @media (max-width: 768px) {
     .nav { padding: 14px 20px; }
-    .nav-links { display: none; flex-direction: column; position: fixed; top: 61px; left: 0; right: 0; background: #fff; border-bottom: 1px solid #f0f0f0; padding: 8px 0; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    .nav-links.open { display: flex; }
-    .nav-links a { padding: 14px 24px; font-size: 15px; border-bottom: 1px solid #f5f5f5; color: #111; text-decoration: none; display: block; }
-    .nav-links a:last-child { border-bottom: none; }
-    .hamburger { display: flex; }
-    .nav-mobile-only { display: block; color: #6d28d9; font-weight: 500; }
-    .nav-cta { display: none !important; }
+    .nav-links { display: none; }
+    .nav-cta { font-size: 12px; padding: 8px 14px; }
     .nav-cta { font-size: 12px; padding: 8px 12px; }
     .hero h1 { font-size: 42px; letter-spacing: -1.5px; margin: 0 auto 20px; }
     .hero { padding: 48px 20px 40px; }
@@ -243,16 +229,13 @@
 
 <nav class="nav">
   <svg height="32" viewBox="43.5 111.9 287.9 126" preserveAspectRatio="xMinYMid meet" style="display:block;"><use href="#logo"/></svg>
-  <div class="nav-links" id="navLinks">
-    <a href="#services" onclick="closeMenu()">Services</a>
-    <a href="#facturation" onclick="closeMenu()">Facturation électronique</a>
-    <a href="#metiers" onclick="closeMenu()">Nouveaux métiers</a>
-    <a href="#contact" onclick="closeMenu()" class="nav-mobile-only">Prendre rendez-vous</a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#facturation">Facturation électronique</a>
+    <a href="#metiers">Nouveaux métiers</a>
+    <a href="#contact" class="nav-mobile-only">Prendre rendez-vous</a>
   </div>
   <a href="#contact" class="nav-cta">Prendre rendez-vous</a>
-  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
 
 <div class="hero-bg"><section id="hero" class="hero">
@@ -352,24 +335,24 @@
   </div>
   <div class="metiers-grid">
     <div class="metier-card welcomer">
-      <div class="metier-top"><div class="metier-picto" style="background:#fdf2f8;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#db2777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg></div><div><h3>Welcomer</h3><span class="metier-badge" style="background:#fdf2f8;color:#9d174d;">Relation client</span></div></div>
+      <div class="metier-top"><div class="metier-picto" style="background:#e8f0f8;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e3a5f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg></div><div><h3>Welcomer</h3><span class="metier-badge" style="background:#e8f0f8;color:#1e3a5f;">Relation client</span></div></div>
       <p class="metier-desc">Dédié à l'intégration des nouveaux clients, le Welcomer sécurise la phase critique entre la signature et la prise en charge par les équipes de production.</p>
       <div class="metier-skills">
-        <div class="metier-skill"><div class="skill-dot" style="background:#db2777;"></div>Structuration du parcours d'onboarding</div>
-        <div class="metier-skill"><div class="skill-dot" style="background:#db2777;"></div>Collecte et qualification des informations entrantes</div>
-        <div class="metier-skill"><div class="skill-dot" style="background:#db2777;"></div>Interface entre le client et les équipes internes</div>
-        <div class="metier-skill"><div class="skill-dot" style="background:#db2777;"></div>Suivi de la satisfaction dès les premiers jours</div>
+        <div class="metier-skill"><div class="skill-dot" style="background:#1e3a5f;"></div>Structuration du parcours d'onboarding</div>
+        <div class="metier-skill"><div class="skill-dot" style="background:#1e3a5f;"></div>Collecte et qualification des informations entrantes</div>
+        <div class="metier-skill"><div class="skill-dot" style="background:#1e3a5f;"></div>Interface entre le client et les équipes internes</div>
+        <div class="metier-skill"><div class="skill-dot" style="background:#1e3a5f;"></div>Suivi de la satisfaction dès les premiers jours</div>
       </div>
       
     </div>
     <div class="metier-card expert">
-      <div class="metier-top"><div class="metier-picto" style="background:#ede9fe;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M6.343 6.343a8 8 0 1 0 11.314 11.314A8 8 0 0 0 6.343 6.343z"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg></div><div><h3>Expert digital</h3><span class="metier-badge" style="background:#ede9fe;color:#5b21b6;">Intégration &amp; API</span></div></div>
+      <div class="metier-top"><div class="metier-picto" style="background:#ddeef8;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a6fa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M6.343 6.343a8 8 0 1 0 11.314 11.314A8 8 0 0 0 6.343 6.343z"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg></div><div><h3>Expert digital</h3><span class="metier-badge" style="background:#ddeef8;color:#1a6fa5;">Intégration &amp; API</span></div></div>
       <p class="metier-desc">Traducteur entre les besoins métiers et les outils du cabinet, il interconnecte les applications pour garantir des flux de données fluides, complets et sécurisés.</p>
       <div class="metier-skills">
-        <div class="metier-skill"><div class="skill-dot" style="background:#6d28d9;"></div>Connexion des applications via API et connecteurs</div>
-        <div class="metier-skill"><div class="skill-dot" style="background:#6d28d9;"></div>Automatisation et fiabilisation des flux de données</div>
-        <div class="metier-skill"><div class="skill-dot" style="background:#6d28d9;"></div>Gestion des échanges entre les différents outils</div>
-        <div class="metier-skill"><div class="skill-dot" style="background:#6d28d9;"></div>Contrôle et sécurisation de la donnée comptable</div>
+        <div class="metier-skill"><div class="skill-dot" style="background:#1a6fa5;"></div>Connexion des applications via API et connecteurs</div>
+        <div class="metier-skill"><div class="skill-dot" style="background:#1a6fa5;"></div>Automatisation et fiabilisation des flux de données</div>
+        <div class="metier-skill"><div class="skill-dot" style="background:#1a6fa5;"></div>Gestion des échanges entre les différents outils</div>
+        <div class="metier-skill"><div class="skill-dot" style="background:#1a6fa5;"></div>Contrôle et sécurisation de la donnée comptable</div>
       </div>
       
     </div>
@@ -387,7 +370,7 @@
   </div>
   <div class="metiers-bottom">
     <p>Ces trois rôles sont <strong>complémentaires et progressifs</strong> : du premier contact client jusqu'à la conduite du changement, ils couvrent l'ensemble du cycle de transformation d'un cabinet. Li!NE propose des programmes de formation sur mesure, adaptés à votre organisation.</p>
-    <a href="#contact" class="btn-pink">Nous contacter</a>
+    <a href="#contact" class="btn-pink" style="background:#1e3a5f;">Nous contacter</a>
   </div>
 </section>
 
@@ -450,32 +433,7 @@
 </footer>
 
 <script>
-function toggleMenu() {
-  var nav = document.getElementById('navLinks');
-  var btn = document.getElementById('hamburger');
-  if (!nav || !btn) return;
-  if (nav.classList.contains('open')) {
-    nav.classList.remove('open');
-    btn.classList.remove('open');
-  } else {
-    nav.classList.add('open');
-    btn.classList.add('open');
-  }
-}
-function closeMenu() {
-  var nav = document.getElementById('navLinks');
-  var btn = document.getElementById('hamburger');
-  if (nav) nav.classList.remove('open');
-  if (btn) btn.classList.remove('open');
-}
-document.addEventListener('click', function(e) {
-  var nav = document.getElementById('navLinks');
-  var btn = document.getElementById('hamburger');
-  if (nav && btn && !nav.contains(e.target) && !btn.contains(e.target)) {
-    nav.classList.remove('open');
-    btn.classList.remove('open');
-  }
-});
+
 function handleSubmit(e) {
   e.preventDefault();
   const p = document.getElementById('prenom').value.trim();
